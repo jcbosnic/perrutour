@@ -43,7 +43,7 @@ a { text-decoration: none; }
     background-size: 80%;
     background-position: top center;
     background-repeat: no-repeat;
-    max-width: 1300px;
+    max-width: 1500px;
     margin: auto;
 }
 
@@ -579,4 +579,137 @@ a { text-decoration: none; }
   background: transparent;
   color: #2e1c05;
   border: 1px solid #2e1c05;
+}
+
+/* =========================
+   TABLET OVERRIDES (641px–1024px)
+   ========================= */
+@media (min-width: 641px) and (max-width: 1024px) {
+
+  /* Hero: centrado, texto un poco más grande y fondo ajustado */
+  .hero {
+    place-items: end center;
+    padding: clamp(16px, 3vw, 28px);
+    text-align: left;
+  }
+  .hero::before {
+    position: absolute;            /* evita “salto” al hacer scroll en tablet */
+    background-size: 110%;         /* ocupa mejor el ancho medio */
+    background-position: center top;
+    opacity: 0.9;                  /* mejora contraste con el texto */
+  }
+
+  /* Logo más contenido y sin tapar el hero */
+  .logo {
+    position: absolute;
+    top: clamp(16px, 3vw, 28px);
+    left: clamp(16px, 3vw, 28px);
+    transform: none;
+  }
+  .logo svg {
+    width: clamp(160px, 28vw, 220px);
+  }
+
+  /* Contenido hero legible */
+  .hero__content {
+    max-width: min(800px, 92vw);
+    padding: clamp(18px, 3vw, 28px);
+    background: rgba(0,0,0,.28);
+    border-radius: 16px;
+  }
+  .hero__content h1 {
+    font-size: clamp(28px, 5.5vw, 52px);
+    margin-bottom: 10px;
+  }
+  .hero__content p {
+    font-size: clamp(15px, 2.2vw, 18px);
+  }
+
+  /* Servicios: quitar posicionamiento fijo para evitar solaparse */
+  .services {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin: clamp(80px, 10vh, 140px) auto 0; /* despeja logo y hero */
+    padding: clamp(18px, 3vw, 26px);
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.35), rgba(15, 14, 14, 0.35));
+    backdrop-filter: blur(8px) saturate(115%);
+  }
+
+  .services__header h2 {
+    font-size: clamp(28px, 5vw, 40px);
+    text-align: center;
+  }
+  .services__header h3 {
+    font-size: clamp(18px, 3vw, 22px);
+    text-align: center;
+    margin-bottom: clamp(14px, 2.5vw, 20px);
+  }
+
+  /* Grilla a 2 columnas consistente en tablet */
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(14px, 2vw, 20px);
+  }
+
+  /* Tarjetas: tipografías y espaciamientos */
+  .card {
+    padding: clamp(16px, 2.5vw, 22px);
+    border-radius: 16px;
+    min-height: 260px;
+  }
+  .card__top { margin-bottom: 8px; }
+  .card__emoji { font-size: clamp(1rem, 2.2vw, 1.25rem); }
+  .card__name  { font-size: clamp(22px, 3.6vw, 28px); }
+  .card__badge { font-size: 11px; padding: 3px 8px; }
+
+  .card__tagline {
+    font-size: clamp(16px, 2.6vw, 18px);
+    margin: 8px 0 12px;
+  }
+  .card__features li {
+    font-size: clamp(.92rem, 2.3vw, 1rem);
+  }
+
+  .card__price .card__amount { font-size: clamp(26px, 4.6vw, 34px); }
+  .card__price .card__suffix { font-size: clamp(11px, 1.6vw, 13px); }
+
+  .card__btn {
+    font-size: clamp(16px, 2.8vw, 20px);
+    padding: clamp(10px, 1.8vw, 12px) clamp(12px, 2.2vw, 16px);
+    border-radius: 12px;
+    min-height: 44px;
+  }
+
+  /* Footer: dos columnas en tablet para mejor densidad */
+  .footer__inner {
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(16px, 3vw, 28px);
+  }
+  @media (orientation: portrait) {
+    .footer__inner { grid-template-columns: 1fr; }
+  }
+  .footer__title { font-size: clamp(18px, 2.6vw, 20px); }
+  .footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* Modal: leve reducción de paddings */
+  .modal { width: min(560px, 92vw); }
+  .modal__body { gap: 12px; }
+  .form__field input {
+    padding: 10px 12px;
+    font-size: 1rem;
+  }
+}
+
+/* =========================
+   TABLET LANDSCAPE (baja altura)
+   Evita que el hero tape servicios
+   ========================= */
+@media (min-width: 841px) and (max-width: 1024px) and (max-height: 820px) {
+  .hero { min-height: 70svh; }
+  .services { margin-top: 4vh; }
 }
