@@ -713,3 +713,247 @@ a { text-decoration: none; }
   .hero { min-height: 70svh; }
   .services { margin-top: 4vh; }
 }
+
+/* =========================================
+   FORZAR DISEÑO MOBILE EN iPad / TABLET LANDSCAPE
+   (altura baja: 700–820px aprox.)
+   ========================================= */
+@media (orientation: landscape) and (max-height: 820px) {
+  /* Hero como mobile */
+  .hero {
+    place-items: end center;
+    padding: 16px;
+    text-align: left;
+    min-height: auto; /* evita ocupar toda la altura en landscape */
+  }
+  .hero__content {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    background: rgba(0,0,0,.32);
+    border-radius: 14px;
+  }
+  .hero__content h1 {
+    font-size: clamp(22px, 7vw, 32px);
+    line-height: 1.12;
+    letter-spacing: .2px;
+    margin-bottom: 8px;
+  }
+  .hero__content p {
+    font-size: clamp(14px, 3.6vw, 16px);
+    color: rgba(255,255,255,.9);
+  }
+
+  /* iOS Safari: evita “fixed” en background */
+  .hero::before {
+    position: absolute !important;
+    background-image: none; /* igual que mobile para máximo contraste */
+  }
+
+  /* Logo centrado como mobile */
+  .logo {
+    position: absolute;
+    top: clamp(12px, 2vw, 24px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .logo svg { width: clamp(200px, 65vw, 120px); }
+
+  /* Servicios EXACTO mobile */
+  .services {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin: clamp(190px, 16vh, 160px) 0 0;
+    border-radius: 16px;
+    padding: 16px;
+    background: none;
+    backdrop-filter: blur(1px);
+    box-shadow: none;
+    color: #222;
+  }
+  .services__header h2 {
+    font-size: 40px;
+    color: #111;
+    text-align: center;
+  }
+  .services__header h3 {
+    font-size: 25px;
+    margin: 25px 0;
+    color: #333;  
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* Grilla & Cards mobile */
+  .services__grid { grid-template-columns: 1fr; gap: 12px; }
+  .card {
+    padding: 16px;
+    border-radius: 14px;
+    min-height: unset;
+    box-shadow: 0 6px 14px rgba(0,0,0,.08);
+  }
+  .card__top { margin-bottom: 8px; }
+  .card__emoji { font-size: 1.1rem; }
+  .card__name { font-size: 35px; }
+  .card__badge { padding: 3px 8px; font-size: 11px; }
+  .card__tagline { font-size: 1rem; margin: 8px 0 10px; }
+  .card__features { gap: 6px; }
+  .card__features li { font-size: .95rem; }
+  .dot { width: 7px; height: 7px; opacity: .8; }
+  .card__price .card__amount { font-size: 35px; }
+  .card__price .card__suffix { font-size: 11px; letter-spacing: .1em; }
+  .card__btn {
+    padding: 12px 16px;
+    min-height: 44px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px; /* cómodo en landscape */
+  }
+
+  /* Footer mobile */
+  .footer__inner { grid-template-columns: 1fr; }
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Opcional: incluye también iPad mini landscape (744px de alto físico) */
+@media (width: 1133px) and (orientation: landscape),
+       (width: 1024px) and (orientation: landscape) {
+  /* Hereda el bloque anterior. Si necesitas algo extra, agrégalo aquí. */
+}
+
+/* =========================================
+   FORZAR DISEÑO MOBILE EN iPad / TABLET VERTICAL
+   (portrait 641px–1024px)
+   ========================================= */
+@media (orientation: portrait) and (min-width: 641px) and (max-width: 1024px) {
+  /* Hero como mobile */
+  .hero {
+    place-items: end center;
+    padding: 16px;
+    text-align: left;
+    min-height: auto;
+  }
+  .hero__content {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    background: rgba(0,0,0,.32);
+    border-radius: 14px;
+  }
+  .hero__content h1 {
+    font-size: clamp(22px, 7vw, 32px);
+    line-height: 1.12;
+    letter-spacing: .2px;
+    margin-bottom: 8px;
+  }
+  .hero__content p {
+    font-size: clamp(14px, 3.6vw, 16px);
+    color: rgba(255,255,255,.9);
+  }
+
+  /* iOS Safari: evita background fijo */
+  .hero::before {
+    position: absolute !important;
+    background-image: none;
+  }
+
+  /* Logo centrado como mobile */
+  .logo {
+    position: absolute;
+    top: max(12px, env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .logo svg { width: clamp(200px, 65vw, 120px); }
+
+  /* Servicios EXACTO mobile */
+  .services {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin: clamp(190px, 16vh, 160px) 0 0;
+    border-radius: 16px;
+    padding: 16px;
+    background: none;
+    backdrop-filter: blur(1px);
+    box-shadow: none;
+    color: #222;
+  }
+  .services__header h2 {
+    font-size: 40px;
+    color: #111;
+    text-align: center;
+  }
+  .services__header h3 {
+    font-size: 25px;
+    margin: 25px 0;
+    color: #333;  
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* Grilla & Cards mobile */
+  .services__grid { grid-template-columns: 1fr; gap: 12px; }
+  .card {
+    padding: 16px;
+    border-radius: 14px;
+    min-height: unset;
+    box-shadow: 0 6px 14px rgba(0,0,0,.08);
+  }
+  .card__top { margin-bottom: 8px; }
+  .card__emoji { font-size: 1.1rem; }
+  .card__name { font-size: 35px; }
+  .card__badge { padding: 3px 8px; font-size: 11px; }
+  .card__tagline { font-size: 1rem; margin: 8px 0 10px; }
+  .card__features { gap: 6px; }
+  .card__features li { font-size: .95rem; }
+  .dot { width: 7px; height: 7px; opacity: .8; }
+  .card__price .card__amount { font-size: 35px; }
+  .card__price .card__suffix { font-size: 11px; letter-spacing: .1em; }
+  .card__btn {
+    padding: 12px 16px;
+    min-height: 44px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  /* Footer mobile */
+  .footer__inner { grid-template-columns: 1fr; }
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Safe area inferior (home indicator) */
+  body { padding-bottom: env(safe-area-inset-bottom, 0); }
+}
+
+/* Opcional: targets específicos de iPad en vertical */
+
+  /* Hereda el bloque anterior; añade overrides finos aquí si hiciera falta */
+@media (height: 1366px)  {
+        .footer { position: absolute; bottom: 0; width: 100%;}
+    }
+
+  @media (height: 1180px) {
+        .footer { position: absolute; bottom: 0; width: 100%;}
+    }  
+
+      @media (height: 1368px) {
+        .footer { position: absolute; bottom: 0; width: 100%;}
+    } 
+
+/* =========================================
+   FOOTER SIEMPRE AL FONDO
+   ========================================= */
+
+/* Estructura flexible para ocupar toda la altura */
+
+
