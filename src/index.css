@@ -1,3 +1,8 @@
+@import "tailwindcss";
+
+
+
+
 /* =========================
    RESET & BASE
    ========================= */
@@ -22,35 +27,56 @@ a { text-decoration: none; }
    HERO (FULL SCREEN)
    ========================= */
 .hero {
-  position: relative;
-  min-height: 100dvh;     /* viewport dinámico moderno */
-  min-height: 100svh;     /* Safari iOS fallback */
-  display: grid;
+ /* Safari iOS fallback */
+  display: flex;
   place-items: center;
   text-align: center;
   overflow: hidden;
   color: #fff;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: 1200px;
+  align-items: center;
 
 
 }
 
 /* Fondo fijo con imagen alineada a la derecha (desktop) */
-.hero::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+.imageDog {
     background-image: url('https://www.marthadebayle.com/wp-content/uploads/2024/05/senales-de-que-tu-perro-es-feliz.jpg');
-    background-size: 80%;
-    background-position: top center;
-    background-repeat: no-repeat;
-    max-width: 1500px;
+    width: 800px;
+    height: 600px;
     margin: auto;
-}
+    background-size: 900px;
+    background-position: center;
+  }
+
+  .bg-dogs {
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.5), rgba(15, 14, 14, 0.5));
+    backdrop-filter: blur(10px) saturate(120%);
+    border-radius: 24px;
+    width: 95%;
+    margin: 20px 0;
+    color: white;
+
+  }
+
+  @media (max-width: 1180px) {
+    .imageDog {
+      background-image: url('https://www.marthadebayle.com/wp-content/uploads/2024/05/senales-de-que-tu-perro-es-feliz.jpg');
+      width: 400px;
+      height: 400px;
+      margin: auto;
+      background-size: cover;
+      background-position: center;
+      margin-top: 160px;
+    }
+  }
 
 
 /* Logo arriba-izquierda, responsive */
 .logo {
-  position: fixed;
+  position: absolute;
   top: clamp(12px, 2vw, 24px);
   left: clamp(12px, 2vw, 24px);
   display: inline-block;
@@ -93,10 +119,8 @@ a { text-decoration: none; }
    SERVICIOS (DESKTOP)
    ========================= */
 .services {
-  position: absolute;
   bottom: 40px;
   left: 50%;
-  transform: translateX(-50%);
   width: min(1200px, 92vw);
   padding: clamp(28px, 4vw, 40px);
   border-radius: 24px;
@@ -105,7 +129,6 @@ a { text-decoration: none; }
   backdrop-filter: blur(10px) saturate(120%);
 
   /* ✅ margen superior flexible para despejar el logo */
-  margin-top: clamp(120px, 18vh, 200px);
 }
 
 /* Encabezado servicios */
@@ -255,6 +278,8 @@ a { text-decoration: none; }
     place-items: end center;
     padding: 16px;
     text-align: left;
+    align-items: center;
+
   }
   .hero__content {
     width: 100%;
@@ -293,7 +318,6 @@ a { text-decoration: none; }
     position: static;
     transform: none;
     width: 100%;
-    margin: clamp(190px, 16vh, 160px) 0 0; /* ✅ margen superior también en mobile */
     border-radius: 16px;
     padding: 16px;
     background: none;
@@ -591,6 +615,9 @@ a { text-decoration: none; }
     place-items: end center;
     padding: clamp(16px, 3vw, 28px);
     text-align: left;
+    align-items: center;
+
+
   }
   .hero::before {
     position: absolute;            /* evita “salto” al hacer scroll en tablet */
@@ -630,7 +657,6 @@ a { text-decoration: none; }
     position: static;
     transform: none;
     width: 100%;
-    margin: clamp(80px, 10vh, 140px) auto 0; /* despeja logo y hero */
     padding: clamp(18px, 3vw, 26px);
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(10, 10, 10, 0.35), rgba(15, 14, 14, 0.35));
@@ -725,6 +751,9 @@ a { text-decoration: none; }
     padding: 16px;
     text-align: left;
     min-height: auto; /* evita ocupar toda la altura en landscape */
+    align-items: center;
+
+        
   }
   .hero__content {
     width: 100%;
@@ -764,7 +793,6 @@ a { text-decoration: none; }
     position: static;
     transform: none;
     width: 100%;
-    margin: clamp(190px, 16vh, 160px) 0 0;
     border-radius: 16px;
     padding: 16px;
     background: none;
@@ -837,7 +865,9 @@ a { text-decoration: none; }
     padding: 16px;
     text-align: left;
     min-height: auto;
+    align-items: center;
   }
+
   .hero__content {
     width: 100%;
     max-width: 100%;
@@ -876,7 +906,6 @@ a { text-decoration: none; }
     position: static;
     transform: none;
     width: 100%;
-    margin: clamp(190px, 16vh, 160px) 0 0;
     border-radius: 16px;
     padding: 16px;
     background: none;
@@ -938,17 +967,7 @@ a { text-decoration: none; }
 /* Opcional: targets específicos de iPad en vertical */
 
   /* Hereda el bloque anterior; añade overrides finos aquí si hiciera falta */
-@media (height: 1366px)  {
-        .footer { position: absolute; bottom: 0; width: 100%;}
-    }
 
-  @media (height: 1180px) {
-        .footer { position: absolute; bottom: 0; width: 100%;}
-    }  
-
-      @media (height: 1368px) {
-        .footer { position: absolute; bottom: 0; width: 100%;}
-    } 
 
 /* =========================================
    FOOTER SIEMPRE AL FONDO
@@ -956,4 +975,10 @@ a { text-decoration: none; }
 
 /* Estructura flexible para ocupar toda la altura */
 
-
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
