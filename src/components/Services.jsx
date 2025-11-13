@@ -52,7 +52,7 @@ export default function Services() {
           <div className="services__grid">
             {plans.map((p) => (
               <article key={p.id} className="card card--simple">
-                <div className="card__title">ç
+                <div className="card__title">
                   <span className="card__name">{p.name}</span>
                 </div>
 
